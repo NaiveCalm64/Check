@@ -1,18 +1,20 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<signal.h>
-int main()
-{
-  pid_t t_pid;
-  printf("Enter PID: ");
-  scanf("%d",&t_pid);
-  if(Kill(t_pid,SIGKILL)==0)
-  {
-    printf("Killde");
-  }
-  else
-  {
-    printf("Error");
-  }
-  return 0;
+#include <stdio.h>
+#include <signal.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main() {
+    pid_t pid; // Process ID
+
+    printf("Enter the Process ID to kill: ");
+    scanf("%d", &pid); // Allowing the user to input the Process ID
+
+    if (kill(pid, SIGKILL) == 0) {
+        printf("Process with PID %d has been killed using SIGKILL\n", pid);
+    } else {
+        perror("Error killing process");
+        return 1;
+    }
+
+    return 0;
 }
