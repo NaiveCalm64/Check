@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<signal.h>
+int main()
+{
+  pid_t t_pid;
+  printf("Enter PID: ");
+  scanf("%d",&t_pid);
+  if(Kill(t_pid,SIGKILL)==0)
+  {
+    printf("Killde");
+  }
+  else
+  {
+    printf("Error");
+  }
+  return 0;
+}
